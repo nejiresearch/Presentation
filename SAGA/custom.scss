@@ -1,0 +1,411 @@
+/*-- scss:defaults --*/
+
+// ============================================
+// POLICES GÉNÉRALES — style éditorial "presse quotidienne" (Le Monde)
+// ============================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+// Police du corps de texte (paragraphes, listes...) : serif de lecture, façon "Le Monde Livre"
+$font-family-sans-serif: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+// Police des titres : serif noir, gras, façon manchette de journal
+$presentation-heading-font: "Georgia", "Times New Roman", serif;
+
+// Taille de police de base (impacte tout le contenu par défaut)
+$presentation-font-size-root: 28px;
+
+// Couleur de texte / fond : noir sur beige/crème, contraste "papier journal"
+$body-color: #111111;
+$body-bg: #F5EFDD;
+
+// Couleur d'accent "rouge Le Monde" (liens, rubriques, éléments actifs)
+$lemonde-red: #CE1126;
+$link-color: $lemonde-red;
+
+
+/*-- scss:rules --*/
+
+// ============================================
+// TITRE DE NIVEAU 1 : "# Titre"
+// (souvent utilisé pour les titres de section / grands titres)
+// ============================================
+.reveal h1 {
+  font-family: $presentation-heading-font;
+  font-size: 2em;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: normal;
+}
+
+// ============================================
+// TITRE DE NIVEAU 2 : "## Titre" (titre principal de chaque diapo)
+// Bulle noire modeste, texte blanc, tout en haut de la diapo
+// ============================================
+.reveal h2 {
+  font-family: $presentation-heading-font;
+  font-size: 0.5em;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant: normal;
+  letter-spacing: 0.02em;
+
+  background-color: #111111;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 22px;
+  display: inline-block;
+  margin: 0 0 20px 0;
+}
+
+
+.hidden-title {
+  display: none !important;
+}
+
+// Sur cette diapo, la bulle de titre native est remplacée par le fil d'Ariane
+// (deux bulles) inséré juste après ; on ne masque que le h2, pas toute la section.
+#slide-alveoles-ha > h2 {
+  display: none !important;
+}
+
+#slide-Titre h2 { display:none; }
+
+// ============================================
+// TITRE DE NIVEAU 3 : "### Sous-titre"
+// ============================================
+.reveal h3 {
+  font-family: $presentation-heading-font;
+  font-size: 1.25em;
+  font-weight: 400;
+  font-style: italic;
+  color: #4a4a4a;
+}
+
+// ============================================
+// TITRE DE NIVEAU 4 : "#### Sous-sous-titre" (si utilisé)
+// "Chapo" de journal : italique, gris, filet fin au-dessus
+// ============================================
+.reveal h4 {
+  font-family: $presentation-heading-font;
+  font-size: 1.05em;
+  font-weight: 400;
+  font-style: italic;
+  color: #4a4a4a;
+  border-top: 1px solid #cccccc;
+  padding-top: 8px;
+}
+
+// ============================================
+// CORPS DE TEXTE (paragraphes, listes)
+// ============================================
+.reveal p,
+.reveal li {
+  font-family: $presentation-heading-font;
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+// ============================================
+// TEXTE EN GRAS (ex: **Mejdi**) — signature d'auteur façon "Par ..."
+// ============================================
+.reveal strong {
+  color: #111111;
+  font-weight: 700;
+}
+
+// ============================================
+// CALLOUTS (ex: .callout-important utilisé dans ta slide "De la Science à la Sûreté")
+// Encadré "presse" : fond blanc cassé, filet rouge à gauche
+// ============================================
+.reveal .callout-important {
+  font-family: $presentation-heading-font;
+  font-size: 0.9em;
+  border-left: 4px solid $lemonde-red;
+  background-color: #fafafa;
+  padding: 15px;
+}
+
+// ============================================
+// FOOTER (pied de page défini dans le YAML : footer: "...")
+// Crédit de bas de page, italique, filet fin au-dessus
+// ============================================
+.reveal .footer {
+  font-family: $presentation-heading-font;
+  font-style: italic;
+  font-size: 0.5em;
+  color: #6a6a6a;
+  border-top: 1px solid #dddddd;
+  padding-top: 4px;
+}
+
+.info-boxes {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.info-box {
+  flex: 1;
+  background-color: #ffffff;
+  border: none;
+  border-top: 3px solid #111111;
+  border-bottom: 1px solid #cccccc;
+  border-radius: 0;
+  padding: 15px;
+  font-size: 0.75em;
+  line-height: 1.3;
+
+  strong {
+    color: $lemonde-red;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+.callout-note {
+  border-left-color: $lemonde-red !important;
+
+  .callout-header {
+    background-color: #f5f5f5 !important;
+    color: #111111 !important;
+  }
+  .callout-title-container,
+  .callout-title {
+    color: #111111 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .callout-icon::before {
+    display: none !important;
+  }
+}
+
+// ============================================
+// LOGO (option "logo:" du YAML) — repositionné en haut à gauche
+// ============================================
+.reveal .slide-logo {
+  top: 10px !important;
+  left: 10px !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+// ============================================
+// NUAGE DE MOTS "AAM dans CIGEO" — noms de projets + fiche au survol
+// ============================================
+.aam-stage .aam-word {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+// L'étiquette (texte du projet) porte la taille/rotation "nuage de mots" ;
+// le conteneur .aam-word reste neutre pour ancrer la fiche sans hériter de la rotation.
+.aam-stage .aam-word-label {
+  display: inline-block;
+  font-family: $presentation-heading-font;
+  font-weight: 600;
+  color: #111111;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.aam-stage .aam-word.size-lg .aam-word-label { font-size: 1.8em; }
+.aam-stage .aam-word.size-md .aam-word-label { font-size: 1.35em; }
+.aam-stage .aam-word.size-sm .aam-word-label { font-size: 1.05em; }
+.aam-stage .aam-word.size-xs .aam-word-label { font-size: 0.85em; }
+
+// Nom de projet sur deux lignes (ex: "Immobilisation gaines MgZr")
+.aam-stage .aam-word.wrap-2 .aam-word-label {
+  white-space: normal;
+  width: 9.5em;
+  line-height: 1.15;
+}
+
+.aam-stage .aam-word:hover .aam-word-label {
+  color: $lemonde-red;
+  transform: scale(1.08);
+}
+
+// Fiche projet (tooltip/card) : cachée par défaut, révélée au survol
+// `position: fixed` ignore le positionnement (absolute) du mot parent : la fiche
+// se fixe donc toujours au même endroit (aligné à droite), quel que soit le mot survolé.
+.aam-stage .aam-card {
+  position: fixed;
+  top: 130px;
+  right: 40px;
+  left: auto;
+  bottom: auto;
+  width: 340px;
+  max-height: 420px;
+  overflow: hidden;
+  background: #ffffff;
+  border-top: 3px solid $lemonde-red;
+  border-bottom: 1px solid #cccccc;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  padding: 14px 18px;
+  text-align: left;
+  white-space: normal;
+  font-size: 15px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 20;
+  transform: scale(0.95);
+  transition: opacity 0.5s cubic-bezier(.22, 1, .36, 1),
+              transform 0.5s cubic-bezier(.22, 1, .36, 1),
+              visibility 0.5s;
+}
+
+.aam-stage .aam-word:hover .aam-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.aam-stage .aam-card .aam-card-title {
+  font-family: $presentation-heading-font;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: #111111;
+  margin-bottom: 6px;
+}
+
+.aam-stage .aam-card h5 {
+  font-family: $presentation-heading-font;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $lemonde-red;
+  border-top: 1px solid #eeeeee;
+  margin: 7px 0 2px;
+  padding-top: 5px;
+}
+.aam-stage .aam-card h5:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.aam-stage .aam-card p,
+.aam-stage .aam-card li {
+  font-family: $font-family-sans-serif;
+  font-size: 0.8em;
+  line-height: 1.3;
+  color: #333333;
+  margin: 0 0 3px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.aam-stage .aam-card ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+// ============================================
+// COUPE ALVÉOLE HA — points chauds (hotspots) avec fiche au survol
+// Réutilise .aam-word / .aam-card (déclenchement au survol déjà défini
+// ci-dessus) ; seul le "label" change : un point qui pulse au lieu d'un mot.
+// ============================================
+.ha-image-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+// Une fois masqué (fade-out déclenché), le bloc ne doit plus intercepter les
+// clics des éléments placés en dessous (ex : le cadre HA_1/HA_2/HA_0).
+.aam-stage .ha-image-wrap.fragment.fade-out.visible {
+  pointer-events: none;
+}
+
+.aam-stage .ha-dot {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $lemonde-red;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 0 rgba(206, 17, 38, 0.55);
+  animation: ha-pulse 2s infinite;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.aam-stage .aam-word:hover .ha-dot {
+  background: #111111;
+  transform: scale(1.15);
+  animation-play-state: paused;
+}
+
+@keyframes ha-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(206, 17, 38, 0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(206, 17, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(206, 17, 38, 0); }
+}
+
+// ============================================
+// BULLES CLIQUABLES SUR LE CHRONOGRAMME — dégradé violet clair → foncé.
+// La couleur est fixée en inline (background) sur chaque bouton dans le .qmd ;
+// le pulse reste neutre pour s'adapter à n'importe quelle couleur de bulle.
+// ============================================
+@keyframes ha-pulse-neutral {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3); }
+  70%  { box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+.ha-bubble {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  animation: ha-pulse-neutral 2s infinite;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  z-index: 4;
+}
+
+.ha-bubble:hover,
+.ha-bubble:focus-visible {
+  filter: brightness(0.75);
+  transform: translate(-50%, -50%) scale(1.25);
+  animation-play-state: paused;
+  outline: none;
+}
+
+// Bulle de reset (blanche, bordure noire) : revient à l'image de base HA_0.png
+.ha-reset-btn {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-color: #111111;
+  color: #111111;
+  font-size: 11px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ha-reset-btn:hover,
+.ha-reset-btn:focus-visible {
+  background: #111111;
+  color: #ffffff;
+  filter: none;
+  outline: none;
+}
+
+// Fragment sans fondu : apparition/disparition instantanée, calée sur le clic
+.ha-instant {
+  transition: none !important;
+}

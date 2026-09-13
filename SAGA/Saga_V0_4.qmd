@@ -1,0 +1,1775 @@
+---
+#title: "Projet SAGA"
+#subtitle: "Validation de la stabilité à long terme des matrices silico-alumineuses via les analogues naturels"
+#author: "Votre Nom - ASNR"
+date: last-modified
+format: 
+  revealjs:
+    #css: custom.css
+    embed-resources: true
+    theme: [simple, custom.scss ]
+    transition: slide
+    slide-number: true
+    #chalkboard: true
+    logo: "Logo/Logo_ASNR_light.svg"
+    footer: "Appui à l'expertise et à la sûreté - Projet SAGA/GOLEM"
+---
+
+
+
+## {#slide-Titre}
+
+![](Logo/Logo_ASNR_full.svg){width="40%"}
+
+
+### [Projet SAGA/GOLEM]{style="font-family: 'Georgia', 'Times New Roman', serif; font-size: 2.5em; font-weight: 700; color: #111111; font-style: normal; letter-spacing: 0.5px;"}
+
+![](images/magadi2.jpg){style="margin-top: -30px; width: 100%; border: 2px solid #111111; padding: 6px; background: black; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"}
+
+
+#### Étude du comportement des matrices silico-alumineuses dans l'environnement de stockage géologique {style="margin-top: -30px; text-align: right;"}
+**Mejdi NEJI, Alvaro SARAVIA FLORES**  
+*ASNR/PSE-ENV/SPDR*
+
+
+## AAM dans CIGEO
+
+```{=html}
+<div class="aam-stage" style="position:relative; width:100%; height:700px; z-index:1;">
+
+  <!-- Image centrale -->
+  <img src="images/CIGEO_draw_3.png" 
+       style="position:absolute; top:25%; left:50%; transform:translate(-50%,-50%); 
+              width:50%; padding:6px; background:#F5EFDD; z-index:1;">
+
+  <!-- Cadre 1 : Video en haut à Gauche -->
+    <div class="fragment fade-in yt-video-frag" data-fragment-index="1" data-player-id="player-1"
+        style="position:absolute; top:5%; left:2%; width:28%; z-index:3;">
+    <div style="font-family:'Georgia','Times New Roman',serif; text-align:left; font-weight:normal; color:'#CE1126'; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1px; font-size:0.6em;">
+      Alvéole MAVL
+    </div>
+    <div id="video-wrapper-1" style="width:300px; height:200px; overflow:hidden; position:relative; border-radius:6px;">
+      <div id="player-1"></div>
+    </div>
+  </div>
+
+  <!-- Cadre 2 : en haut à droite -->
+  <div class="fragment fade-in yt-video-frag" data-fragment-index="1" data-player-id="player-2"
+     style="position:absolute; top:5%; right:2%; width:28%; z-index:3;">
+    <div style="font-family:'Georgia','Times New Roman',serif; text-align:left; font-weight:normal; color:#ce9c11; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1px; font-size:0.6em;">
+      Alvéole HA
+    </div>
+    <div id="video-wrapper-2" style="width:300px; height:200px; overflow:hidden; position:relative; border-radius:6px;">
+      <div id="player-2"></div>
+    </div>
+  </div>
+
+  <!-- Chiffre clé : moitié gauche inférieure -->
+  <div class="fragment fade-in" data-fragment-index="2"
+       style="position:absolute; bottom:10%; left:4%; width:fit-content; z-index:2; text-align:center; border:1px solid #111111; padding:15px 20px; box-sizing:border-box;">
+    <div style="font-family:'Georgia','Times New Roman',serif; font-weight:650; font-size:5em; line-height:0.9; color:#111111;">
+      2.2<br><span style="color:#CE1126;">Mt</span>
+    </div>
+    <div style="font-weight:bold; color:#111111; text-transform:uppercase; letter-spacing:0.08em; font-size:1em; margin-top:10px; border-top:3px solid #CE1126; padding-top:10px; display:inline-block;">
+      de ciment
+    </div>
+  </div>
+
+  <!-- OUVERTURE Graphique 1 : pleine largeur, en bas -->
+  <div class="fragment fade-in" data-fragment-index="3">
+    <div class="plotly-wrapper" style="position:absolute; bottom:10%; right:14%; width:54%; height:260px; z-index:2;">
+```
+
+```{python}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 3.2
+import plotly.express as px
+import pandas as pd
+
+df1 = pd.DataFrame({
+    "Année": list(range(2004, 2025)),
+    "(Mt)": [20.9,21.2,22.2,22.2,21.4,18.3,17.9,19.4,18,17.4,16.4,15.5,15.9,
+                    16.8,16.5,16.7,16.4,17.5,16.7,15.4,13.9]
+})
+
+fig1 = px.area(df1, x="Année", y="(Mt)", title="Production de ciment en France (Mt)",height=300, width=500)
+fig1.update_traces(line=dict(color="#111111", width=2),
+                    fillcolor="rgba(206, 17, 38, 0.15)")
+fig1.update_layout(
+    plot_bgcolor="#F5EFDD",
+    paper_bgcolor="#F5EFDD",
+    font=dict(family="Georgia, serif", color="#111111", size=13),
+    title=dict(font=dict(size=16, family="Georgia, serif", color="#111111"), x=0.02, xanchor="left"),
+    xaxis=dict(showgrid=False, zeroline=False, showline=True, linecolor="#111111", ticks="outside"),
+    yaxis=dict(title="", showgrid=False, zeroline=False, showline=False, range=[13, 25]),
+    margin=dict(l=50, r=20, t=40, b=35),
+    height=260,
+    autosize=True
+)
+fig1.show()
+```
+
+```{=html}
+  </div>
+  </div>
+  <!-- FERMETURE Graphique 1 -->
+
+  <!-- Cadre : message clé bas droite (style "pull-quote" presse) -->
+  <div class="fragment fade-in" data-fragment-index="4"
+       style="position:absolute; bottom:35%; right:2%; width:30%; z-index:2; background:#FFFFFF; border-top:3px solid #111111; border-bottom:1px solid #111111; padding:14px 20px; box-sizing:border-box; text-align:center;">
+    <div style="font-family:'Georgia','Times New Roman',serif; text-transform:uppercase; letter-spacing:0.15em; font-size:0.4em; font-weight:700; color:#CE1126; text-align:center; margin-bottom:8px;">
+      Perspective
+    </div>
+    <div style="font-family:'Georgia','Times New Roman',serif; font-style:italic; font-size:0.8em; line-height:1.3; color:#111111;">
+      <span style="font-size:1.4em; color:#CE1126; vertical-align:-0.3em; font-style:normal;">&ldquo;</span>Les SCM activés, le ciment de demain<span style="font-size:1em; color:#CE1126; vertical-align:-0.45em; font-style:normal;">&rdquo;</span>
+    </div>
+  </div>
+
+</div>
+<!-- FERMETURE .aam-stage -->
+
+<script>
+(function() {
+  // Infrastructure partagée par tous les cadres vidéo (une seule définition, quel que
+  // soit l'ordre/temps de chargement : évite de perdre une config si l'API Youtube
+  // répond avant que les <script> des slides suivantes n'aient été exécutés).
+  if (!window.__ytSetupDone) {
+    window.__ytSetupDone = true;
+    window.__ytQueue = [];
+    window.__ytApiReady = false;
+
+    window.__ytCreatePlayer = function(cfg) {
+      let intervalId;
+      const p = new YT.Player(cfg.containerId, {
+        videoId: cfg.videoId,
+        playerVars: {
+          start: cfg.start,
+          autoplay: 0,
+          mute: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          fs: 0,
+          disablekb: 1
+        },
+        events: {
+          onReady: (event) => event.target.setPlaybackRate(cfg.rate || 1),
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              intervalId = setInterval(() => {
+                if (p.getCurrentTime() >= cfg.end - 0.3) {
+                  p.pauseVideo();
+                  clearInterval(intervalId);
+                  // La vidéo se met simplement en pause : l'avancée des fragments suivants
+                  // reste déclenchée par l'utilisateur (clic / flèche), pas automatiquement.
+                }
+              }, 100);
+            }
+            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+              clearInterval(intervalId);
+            }
+          }
+        }
+      });
+      window.__ytPlayers = window.__ytPlayers || {};
+      window.__ytPlayers[cfg.containerId] = p;
+    };
+
+    // Crée le player tout de suite si l'API est déjà prête, sinon met en file d'attente.
+    window.__ytQueuePlayer = function(cfg) {
+      if (window.__ytApiReady) {
+        window.__ytCreatePlayer(cfg);
+      } else {
+        window.__ytQueue.push(cfg);
+      }
+    };
+
+    window.onYouTubeIframeAPIReady = function() {
+      window.__ytApiReady = true;
+      window.__ytQueue.forEach(window.__ytCreatePlayer);
+      window.__ytQueue = [];
+    };
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+  }
+  if (!window.__ytFragmentListenerAdded) {
+    window.__ytFragmentListenerAdded = true;
+    function tryPlay(containerId, retries) {
+      const p = window.__ytPlayers && window.__ytPlayers[containerId];
+      if (p && typeof p.playVideo === 'function') {
+        p.playVideo();
+      } else if (retries > 0) {
+        setTimeout(() => tryPlay(containerId, retries - 1), 200);
+      }
+    }
+    function onRevealAvailable(cb) {
+      if (window.Reveal) { cb(); return; }
+      const iv = setInterval(() => { if (window.Reveal) { clearInterval(iv); cb(); } }, 50);
+    }
+    onRevealAvailable(() => {
+      Reveal.on('fragmentshown', event => {
+        const shown = event.fragments || (event.fragment ? [event.fragment] : []);
+        shown.forEach(el => {
+          if (el.classList && el.classList.contains('yt-video-frag')) {
+            tryPlay(el.dataset.playerId, 25);
+          }
+        });
+      });
+    });
+  }
+  window.__ytQueuePlayer({ containerId: 'player-1', videoId: 'h8vWuoZN-jk', start: 95, end: 135, rate: 2 });
+  window.__ytQueuePlayer({ containerId: 'player-2', videoId: 'h8vWuoZN-jk', start: 140, end: 180, rate: 2 });
+})();
+</script>
+```
+
+## AAM dans CIGEO 
+
+```{=html}
+<div class="aam-stage" style="position:relative; width:100%; height:700px; z-index:1;">
+
+  <!-- Image centrale -->
+  <img src="images/CIGEO_draw_3.png" 
+       style="position:absolute; top:25%; left:50%; transform:translate(-50%,-50%); 
+              width:50%; padding:6px; background:#F5EFDD; z-index:1;">
+
+  <!-- Nuage de mots : noms de projets autour du schéma -->
+
+  <!-- Légende de catégorie, au-dessus de MREA -->
+  <div style="position:absolute; top:30%; left:4%; width:300px; z-index:3; font-weight:bold; font-family:'Arial', sans-serif; font-size:0.75em; color:#222222; text-align:left;">
+    <span>Projets de la D.A.C <br>incluant des géopolymères</span>
+  </div>
+
+  <!-- MREA : milieu-droite -->
+  <div class="aam-word card-right card-below size-sm" style="position:absolute; top:35%; left:4%; z-index:3;">
+    <span class="aam-word-label" style="font-family:'Arial', sans-serif; text-align:left; font-weight:bold; color:#8FBC8F; letter-spacing:0.01em; font-size:3em;">MREA</span>
+    <div class="aam-card">
+      <div class="aam-card-title">MREA</div>
+      <h5>Résumé</h5>
+      <p>Coulis géopolymère pour l'espace annulaire de l'alvéole HA&nbsp;: neutralise l'acidité et limite la corrosion du chemisage acier.</p>
+      <h5>Études réalisées</h5>
+      <ul>
+        <li>Sélection de la source minérale optimale.</li>
+        <li>Optimisation solution alcaline, rapport s/l, additifs.</li>
+        <li>Transformations structurales à 20/90&nbsp;°C (zéolite).</li>
+      </ul>
+      <h5>Formulations étudiées</h5>
+      <p><strong>Précurseur</strong>&nbsp;: argilite calciné + metakaolin avec additifs (acide borique et tétraborates de lithium ou de sodium) <br> <strong>Activateur</strong>&nbsp;: Solutions potassique ou sodique</p>
+      <h5>Résultats obtenus</h5>
+      <p>Cahier des charges atteignable (DPU&nbsp;&gt;&nbsp;24h, pH 10-11) avec un mélange xmétakaolin + argilite calcinée (≥&nbsp;650&nbsp;°C).</p>
+    </div>
+  </div>
+
+
+  <!-- INIFUGE : haut-gauche -->
+  <div class="aam-word card-right card-below size-lg" style="position:absolute; top:47%; left:4%; z-index:3;">
+    <span class="aam-word-label" style="font-family:'Arial', sans-serif; text-align:left; font-weight:bold; color:#696969; letter-spacing:0.01em; font-size:3.5em;";">INIFUGE</span>
+    <div class="aam-card">
+      <div class="aam-card-title">INIFUGE</div>
+      <h5>Résumé</h5>
+      <p>Développement d'un liant géopolymère innovant, résistant au feu, destinés aux colis et aux alvéoles de déchets de moyenne activité à vie longue (MA-VL), assurant la sécurité et la durabilité du confinement.</p>
+      <h5>Études réalisées</h5>
+      <p>Résistance en compression avant/après traitement thermique à 1&nbsp;000&nbsp;°C.</p>
+      <h5>Formulations étudiées</h5>
+      <p><strong>Précurseur</strong>&nbsp;: argilite + kaolin (pur ou métakaolin impur K5), taux d'argilite 0/33/67&nbsp;%, calcination à 600 ou 750&nbsp;°C<br>  <strong>Activateur</strong>&nbsp;: Solutions potassique.</p>
+      <h5>Résultats obtenus</h5>
+      <p>La résistance au feu dépend de la teneur en argilite et du kaolin. Argilite + métakaolin K5&nbsp;: tenue à 1&nbsp;000&nbsp;°C, gain de compression jusqu'à 73&nbsp;%.</p>
+    </div>
+  </div>
+
+
+  <!-- Immobilisation des gaines MgZr : bas-droite -->
+  <div class="aam-word card-left card-above size-xs wrap-2" style="position:absolute; top:60%; left:4%; z-index:3;">
+    <span class="aam-word-label" style="font-family:'Arial', sans-serif; text-align:left; font-weight:bold; color:#4A7C8C; letter-spacing:0.01em; font-size:3.5em;">COLIS MgZr</span>
+    <div class="aam-card">
+      <div class="aam-card-title">Immobilisation des gaines MgZr</div>
+      <h5>Résumé</h5>
+      <p>Matrices à base degéopolymères pour conditionner des déchets magnésiens (gaines de combustible MgZr).</p>
+      <h5>Études réalisées</h5>
+      <ul>
+        <li>Essais à l'échelle 1 (site de Marcoule).</li>
+        <li>Effet des fluorures (NaF) sur la corrosion du magnésium.</li>
+        <li>Tenue aux rayonnements, rétention des radionucléides.</li>
+      </ul>
+      <h5>Formulations étudiées</h5>
+      <p><strong>Précurseur</strong>&nbsp;: Metakaolin <br> <strong>Activateur</strong>&nbsp;: Solutions sodique avec 1.25mol/L de NaF.<br> <strong>Autres</strong>&nbsp;: Sable</p>
+      <h5>Résultats obtenus</h5>
+      <p>pH&nbsp;&gt;&nbsp;12 → passivation en brucite Mg(OH)₂. Le NaF limite la corrosion (MgF₂/NaMgF₃), la forte concentration étant plus efficace.bonne tenue aux rayonnements et rétention des radionucléides.</p>
+    </div>
+  </div>
+
+
+  <!-- Chemisage HA : milieu-gauche -->
+  <div class="aam-word card-right card-above size-md" style="position:absolute; top:73%; left:4%; z-index:3;">
+    <span class="aam-word-label" style="font-family:'Arial', sans-serif; text-align:left; font-weight:bold; color:#ce9c11; letter-spacing:0.01em; font-size:4em;">CHEMISAGE HA</span>
+    <div class="aam-card">
+      <div class="aam-card-title">Chemisage HA</div>
+      <h5>Résumé</h5>
+      <p>Composites à matrice minérale pour le chemisage des alvéoles HA&nbsp;: mécanique et inertie chimique.</p>
+      <h5>Études réalisées</h5>
+      <ul>
+        <li>Optimisation du couple matrice/fibres.</li>
+        <li>Formulation pour l'imprégnation des renforts.</li>
+        <li>Formes tubulaires (&Phi;&nbsp;70&nbsp;cm, l&nbsp;200&nbsp;cm).</li>
+      </ul>
+      <h5>Formulations étudiées</h5>
+     <p><strong>Précurseur</strong>&nbsp;: Metakaolin <br> <strong>Activateur</strong>&nbsp;: Solutions potassique.<br> <strong>Renfort</strong>&nbsp;: fibres courtes de wollastonite ou fibre longe de verre alcali résistant</p>
+      <h5>Résultats obtenus</h5>
+      <p>Tenue des renforts en milieu alcalin et mode opératoire de synthèse des composites maîtrisé.</p>
+    </div>
+  </div>
+
+  <!-- Légende, en dessous de Chemisage HA -->
+  <div style="position:absolute; top:90%; right:40%; width:300px; z-index:3; font-family:'Georgia','Times New Roman',serif; font-style:italic; font-weight:400; font-size:0.5em; color:#111111; text-align:center;">
+    Quid des éléments de structures&nbsp;?
+  </div>
+
+
+</div>
+```
+## Les alvéoles HA {data-transition="zoom" #slide-alveoles-ha}
+
+```{=html}
+<div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#111111; letter-spacing:0.02em; background-color:#F5EFDD; border:2px solid #111111; border-radius:999px; padding:5px 20px; display:inline-block;">
+    AAM dans CIGEO
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#ffffff; letter-spacing:0.02em; background-color:#111111; border-radius:999px; padding:6px 22px; display:inline-block;">
+    Les alvéoles HA
+  </span>
+</div>
+
+
+<div class="aam-stage" style="position:relative; width:100%; height:700px; z-index:1;">
+
+  <!-- Image centrale + zones interactives : disparaît au clic suivant (après le chronogramme) -->
+  <div class="ha-image-wrap fragment fade-out" data-fragment-index="2" style="position:absolute; top:0%; left:0%; width:50%; aspect-ratio:1/1; padding:6px; background:#F5EFDD; z-index:2;">
+
+    <img src="images/Alveole_HA_5.png" style="display:block; width:100%; height:100%;">
+
+    <!-- 0. Argilite -->
+    <div class="aam-word" style="position:absolute; top:13%; left:7%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">Argilite COX</div>
+        <p>EDZ (Excavation Damaged Zone) avec des microfissures induites par l'excavation.</p>
+      </div>
+    </div>
+
+
+
+    <!-- 1. MREA : anneau externe -->
+    <div class="aam-word" style="position:absolute; top:8%; left:47%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">MREA — Espace annulaire</div>
+        <h5>Résumé</h5>
+        <p>Coulis betonitique injecté dans l'espace annulaire entre le chemisage et la roche&nbsp;: neutralise l'acidité et limite la corrosion du chemisage acier.</p>
+        <p><strong>Dimension</strong>&nbsp;: 762-900mm (ep : 138mm)</p>
+        <p><strong>Formulations évoquées</strong>&nbsp;: CEM III/C + Bentonite,  CEM I + Bentonite, Géopolymère à base d'argilite calciné et de metakaolin</p>
+      </div>
+    </div>
+
+    <!-- 2. Chemisage HA : anneau composite -->
+    <div class="aam-word" style="position:absolute; top:45%; left:13.25%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">Chemisage HA</div>
+        <h5>Résumé</h5>
+        <p>Tube de chemisage en acier de l'alvéole&nbsp;: tenue mécanique et inertie chimique en milieu alcalin.</p>
+        <p><strong>Dimension</strong>&nbsp;: 712-762mm (ep : 50mm)</p>
+        <p><strong>Formulations évoquées</strong>&nbsp;: acier, Géopolymère à base de metakaolin renforcé par des fibres inorganiques</p>
+      </div>
+    </div>
+
+    <!-- 3. Surconteneur en acier -->
+    <div class="aam-word" style="position:absolute; top:70%; left:34%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">Surconteneur en acier</div>
+        <h5>Résumé</h5>
+        <p>Enveloppe métallique externe du colis&nbsp;: protection mécanique du conteneur primaire pendant la manutention et le stockage.</p>
+        <p><strong>Dimension</strong>&nbsp;: 505-635mm (ep : 130mm)</p>
+        <p><strong>Formulations évoquées</strong>&nbsp;: acier</p>        
+      </div>
+    </div>
+
+    <!-- 4. Conteneur en acier -->
+    <div class="aam-word" style="position:absolute; top:31%; left:34%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">Conteneur en acier</div>
+        <h5>Résumé</h5>
+        <p>Enveloppe de confinement primaire du colis de déchets vitrifiés, au contact direct de la matrice vitrifiée.</p>
+        <p><strong>Dimension</strong>&nbsp;: ?-505mm (ep : ? mm)</p>
+        <p><strong>Formulations évoquées</strong>&nbsp;: acier</p>
+
+      </div>
+    </div>
+
+    <!-- 5. Matrice vitrifiée : cœur du colis -->
+    <div class="aam-word" style="position:absolute; top:48%; left:47%; z-index:2;">
+      <span class="ha-dot"></span>
+      <div class="aam-card">
+        <div class="aam-card-title">Matrice vitrifiée</div>
+        <h5>Résumé</h5>
+        <p>Matrice de verre borosilicaté immobilisant les produits de fission et actinides mineurs issus du traitement du combustible usé.</p>
+        <p><strong>Dimension</strong>&nbsp;: diamètre : ~505mm</p>
+        <p><strong>Formulations évoquées</strong>&nbsp;: verre borosilicaté</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HA_SC : apparaît à la place du schéma détaillé, même clic que sa disparition et que le chronogramme -->
+  <!-- ha-instant : pas de fondu, apparition synchronisée avec le clic -->
+  <div class="fragment fade-in ha-instant" data-fragment-index="2"
+       style="position:absolute; top:10%; left:0%; width:50%; aspect-ratio:1/1; padding:6px; background:#F5EFDD; z-index:1;">
+    <!-- Titres des 4 sous-images (une par quart de largeur) -->
+    <div style="position:absolute; top:2%; left:5%; width:30%; font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:normal; color:#111111; text-transform:uppercase; letter-spacing:0.05em; font-size:0.50em; box-sizing:border-box; padding:0 4px;">
+      À l'installation
+    </div>
+    <div style="position:absolute; top:21%; left:50%; width:25%; font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:normal; color:#111111; text-transform:uppercase; letter-spacing:0.05em; font-size:0.50em; box-sizing:border-box; padding:0 4px;">
+      Période 1
+    </div>
+    <div style="position:absolute; top:43%; left:5%; width:25%; font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:normal; color:#111111; text-transform:uppercase; letter-spacing:0.05em; font-size:0.50em; box-sizing:border-box; padding:0 4px;">
+      Période 2a
+    </div>
+    <div style="position:absolute; top:58%; left:50%; width:25%; font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:normal; color:#111111; text-transform:uppercase; letter-spacing:0.05em; font-size:0.50em; box-sizing:border-box; padding:0 4px;">
+      Période 2b
+    </div>
+    <img src="images/HA_SC.png"
+         style="display:block; width:100%; height:100%; box-sizing:border-box;">
+  </div>
+
+  <!-- Chronogramme : à droite du schéma (image portrait 969x1427) -->
+  <div class="fragment fade-in" data-fragment-index="2"
+        style="position:absolute; top:0%; right:2%; width:42%; z-index:1;">
+    <div style="font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:normal; color:#000000; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; font-size:0.6em;">
+      Evolution de l'alvéole HA
+    </div>
+
+    <div style="position:relative; width:95%;">
+      <img src="images/Schema_Sc_alveole_3.png" style="display:block; width:100%; height:auto;">
+    </div>
+  </div>
+</div>
+
+```
+## Évolution de l'alvéole HA dans le temps {#slide-evolution-ha background-color="#0F1E3D"}
+
+```{=html}
+<style>
+#slide-evolution-ha h2 { display:none; }
+#slide-evolution-ha .evolution-figure {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  width:100%; height:calc(100% - 60px);
+}
+#slide-evolution-ha .evolution-figure .cell,
+#slide-evolution-ha .evolution-figure .cell-output-display,
+#slide-evolution-ha .evolution-figure .plotly-graph-div {
+  margin:0 auto;
+}
+#slide-evolution-ha .evolution-figure-title {
+  font-family:'Georgia','Times New Roman',serif; text-align:center; font-weight:700;
+  color:#F5EFDD; text-transform:uppercase; letter-spacing:0.08em;
+  font-size:1.1em; margin-bottom:6px;
+}
+#slide-evolution-ha .evolution-figure-wrap {
+  position:relative; width:1020px; height:560px;
+}
+#slide-evolution-ha .zone-frame {
+  position:absolute; top:285px; height:205px;
+  border:2px solid #F5EFDD; border-radius:4px;
+  background:rgba(245,239,221,0.08);
+  box-sizing:border-box; pointer-events:none;
+}
+#slide-evolution-ha .zone-frame-golem { left:40%; top:35%; width:50px; }
+#slide-evolution-ha .zone-label {
+  position:absolute; top:255px; width:82px; text-align:center;
+  font-family:'Georgia','Times New Roman',serif; font-weight:700;
+  color:#F5EFDD; text-transform:uppercase; letter-spacing:0.05em; font-size:0.6em;
+}
+#slide-evolution-ha .zone-label-golem  { left:39%; top:30%; }
+/* SAGA : positionné à la fin du slider des années, juste au-dessus, sans cadre */
+#slide-evolution-ha .zone-label-saga { top:auto; left:auto; right:25%; bottom:13%; width:auto; }
+</style>
+
+<div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    AAM dans CIGEO
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Les alvéoles HA
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#0F1E3D; letter-spacing:0.02em; background-color:#F5EFDD; border-radius:999px; padding:6px 22px; display:inline-block;">
+    Évolution dans le temps
+  </span>
+</div>
+
+<div class="evolution-figure">
+<div class="evolution-figure-title">Évolution minéralogique</div>
+<div class="evolution-figure-wrap">
+```
+
+```{python}
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+Df_plot_1 = pd.read_pickle('python/Data_HA_4k.pkl')
+Df_color_VF = pd.read_pickle('python/Colors_HA_4k.pkl')
+
+# --- Style "Le Monde" ---
+FONT_FAMILY  = "Georgia"
+COLOR_BG     = "#0F1E3D"
+COLOR_TEXT   = "#F5EFDD"
+COLOR_GRID   = "rgba(245,239,221,0.20)"
+COLOR_ACCENT = "#E8505B"
+FONT_SIZE    = 16
+
+# --- Données ---
+minerals = list(Df_color_VF['Minerals'])
+colors   = list(Df_color_VF['Color'])
+times    = sorted(Df_plot_1['Times (years)'].unique())
+
+temp_full = Df_plot_1.drop_duplicates(subset='Times (years)').sort_values('Times (years)')
+
+x_grid = np.linspace(
+    Df_plot_1['x-distance (mm)'].min(),
+    Df_plot_1['x-distance (mm)'].max(),
+    200
+)
+
+def get_frame_df(t):
+    dft = Df_plot_1[Df_plot_1['Times (years)'] == t].sort_values('x-distance (mm)')
+    out = {'x-distance (mm)': x_grid}
+    for m in minerals:
+        out[m] = np.interp(x_grid, dft['x-distance (mm)'], dft[m])
+    return pd.DataFrame(out)
+
+# --- Figure ---
+fig = make_subplots(
+    rows=2, cols=1,
+    row_heights=[0.32, 0.68],
+    vertical_spacing=0.3,
+    subplot_titles=(" ", " ")
+)
+
+# 1) Courbe de fond
+fig.add_trace(
+    go.Scatter(
+        x=temp_full['Times (years)'], y=temp_full['temperature [Celsius]'],
+        mode='lines', line=dict(color=COLOR_GRID, width=2),
+        showlegend=False, hoverinfo='skip'
+    ),
+    row=1, col=1
+)
+
+# 2) Point mobile
+t0 = times[0]
+y0 = temp_full.loc[temp_full['Times (years)'] == t0, 'temperature [Celsius]'].values[0]
+fig.add_trace(
+    go.Scatter(
+        x=[t0], y=[y0], mode='markers',
+        marker=dict(size=20, color=COLOR_ACCENT, line=dict(color='white', width=2)),
+        showlegend=False,
+        hovertemplate='Année %{x}<br>%{y:.1f} °C<extra></extra>'
+    ),
+    row=1, col=1
+)
+
+# 3) Minéraux
+df0 = get_frame_df(t0)
+for m, c in zip(minerals, colors):
+    fig.add_trace(
+        go.Scatter(
+            x=df0['x-distance (mm)'], y=df0[m],
+            mode='lines', stackgroup='one',
+            line=dict(width=0.4, color=c), fillcolor=c,
+            name=m
+        ),
+        row=2, col=1
+    )
+
+# --- Annotation température (grande, en haut) ---
+def set_temp_annotation(annotations, temp_value):
+    annots = [a.to_plotly_json() if hasattr(a, 'to_plotly_json') else dict(a) for a in annotations]
+    annots[0].update(
+        text=f"{temp_value:.0f} °C",
+        font=dict(size=42, family=FONT_FAMILY, color=COLOR_ACCENT)
+    )
+    return annots
+
+fig.update_layout(annotations=set_temp_annotation(fig.layout.annotations, y0))
+
+# --- Frames ---
+frames = []
+for t in times:
+    yt = temp_full.loc[temp_full['Times (years)'] == t, 'temperature [Celsius]'].values[0]
+    dft = get_frame_df(t)
+
+    frame_data = [go.Scatter(x=[t], y=[yt])]
+    for m in minerals:
+        frame_data.append(go.Scatter(x=dft['x-distance (mm)'], y=dft[m]))
+
+    frames.append(go.Frame(
+        data=frame_data,
+        traces=list(range(1, 2 + len(minerals))),
+        name=str(t),
+        layout=go.Layout(annotations=set_temp_annotation(fig.layout.annotations, yt))
+    ))
+
+fig.frames = frames
+
+# --- Slider : plus de labels d'années sous les graduations ---
+sliders = [dict(
+    active=0,
+    x=0.1, y=-0.12, len=0.85,
+    currentvalue=dict(
+        prefix="Année : ",
+        font=dict(size=FONT_SIZE + 14, family=FONT_FAMILY, color=COLOR_TEXT)  # reste visible
+    ),
+    font=dict(color='rgba(0,0,0,0)'),  # <-- rend les labels sous les graduations transparents
+    bgcolor="rgba(245,239,221,0.25)",
+    activebgcolor=COLOR_TEXT,
+    bordercolor="rgba(245,239,221,0.35)",
+    tickcolor="rgba(245,239,221,0.35)",
+    pad=dict(t=20, b=8),
+    steps=[dict(
+        method='animate',
+        args=[[str(t)], dict(mode='immediate',
+                              frame=dict(duration=0, redraw=True),
+                              transition=dict(duration=0))],
+        label=str(t)          # <-- on remet le vrai label (nécessaire pour currentvalue)
+    ) for t in times]
+)]
+
+# --- Mise en forme générale ---
+fig.update_layout(
+    template='simple_white',
+    font_family=FONT_FAMILY,
+    font_color=COLOR_TEXT,
+    font_size=FONT_SIZE,
+    plot_bgcolor=COLOR_BG,
+    paper_bgcolor=COLOR_BG,
+    height=560, width=1020,
+    autosize=False,
+    sliders=sliders,
+    legend=dict(
+        orientation='v',
+        x=1.02, y=0.5, xanchor='left', yanchor='middle',
+        font=dict(size=FONT_SIZE - 4)
+    ),
+    margin=dict(t=60, b=70, l=60, r=150)
+)
+
+fig.update_xaxes(visible=False, row=1, col=1)
+fig.update_yaxes(visible=False, row=1, col=1)
+
+# Axe élargi pour montrer les 3 zones (600-900)
+fig.update_xaxes(title='Distance (mm)', range=[600, 1000], row=2, col=1,
+                  showgrid=True, gridcolor=COLOR_GRID, linecolor=COLOR_TEXT)
+fig.update_yaxes(title='Fraction volumique', range=[0, 1], row=2, col=1,
+                  showgrid=True, gridcolor=COLOR_GRID, linecolor=COLOR_TEXT)
+
+# --- Rectangles de zone (sans titre intégré), sur le panel minéralogique ---
+fig.add_vrect(
+    x0=600, x1=800, row=2, col=1,
+    fillcolor="#2c6ea8", opacity=0.08, line_width=1, line_color="#2c6ea8"
+)
+fig.add_vrect(
+    x0=800, x1=866, row=2, col=1,
+    fillcolor=COLOR_ACCENT, opacity=0.08, line_width=1, line_color=COLOR_ACCENT
+)
+fig.add_vrect(
+    x0=866, x1=900, row=2, col=1,
+    fillcolor="#5a9c5a", opacity=0.08, line_width=1, line_color="#383838"
+)
+fig.add_vrect(
+    x0=900, x1=1050, row=2, col=1,
+    fillcolor="#5a9c5a", opacity=0.08, line_width=1, line_color="#5a9c5a"
+)
+
+# --- Titres des zones, centrés et placés juste au-dessus du graphique (hors des rectangles) ---
+zone_labels = [
+    (700, "EDZ"),
+    (833, "MREA"),
+    (883, "Liner"),
+    (975, "Matrice vitreuse"),
+]
+for x_center, label in zone_labels:
+    fig.add_annotation(
+        x=x_center, y=1.05,
+        xref="x2", yref="y2 domain",
+        text=label, showarrow=False,
+        xanchor="center", yanchor="bottom",
+        font=dict(family=FONT_FAMILY, color=COLOR_TEXT, size=FONT_SIZE - 2)
+    )
+
+fig.show()
+
+```
+
+```{=html}
+<div class="zone-frame zone-frame-golem fragment fade-in" data-fragment-index="1"></div>
+<div class="zone-label zone-label-golem fragment fade-in" data-fragment-index="1">Golem</div>
+<div class="zone-label zone-label-saga fragment fade-in" data-fragment-index="1">SAGA</div>
+</div>
+</div>
+```
+## Le Projet GOLEM {#slide-Golem background-color="#0F1E3D"}
+
+```{=html}
+<style>
+#slide-Golem h2 { display:none; }
+#slide-Golem .golem-wrap {
+  font-family:'Georgia','Times New Roman',serif; color:#F5EFDD; width:100%;
+  height:600px; box-sizing:border-box; display:flex; flex-direction:column;
+}
+
+#slide-Golem .golem-breadcrumb { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+#slide-Golem .crumb {
+  font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700;
+  letter-spacing:0.02em; border-radius:999px; padding:5px 20px; display:inline-block;
+}
+#slide-Golem .crumb.outline { color:#F5EFDD; background-color:transparent; border:2px solid #F5EFDD; }
+#slide-Golem .crumb.current { color:#0F1E3D; background-color:#F5EFDD; border:2px solid #F5EFDD; }
+
+#slide-Golem .golem-header { text-align:center; margin-bottom:12px; }
+#slide-Golem .golem-slogan { font-size:0.65em; font-weight:700; letter-spacing:0.06em; color:#F5EFDD; }
+#slide-Golem .golem-desc { font-size:0.5em; font-style:italic; opacity:0.85; margin-top:6px; line-height:1.35; }
+
+/* ---------- Disposition : 2 colonnes (1/3 - 2/3) ---------- */
+#slide-Golem .golem-grid {
+  flex:1 1 auto; min-height:0;
+  display:flex;
+  gap:10px;
+}
+
+/* Colonne de gauche (1/3) : Questionnement + Résultats attendus, empilés, SANS cadre visible */
+#slide-Golem .golem-col-left {
+  flex:1 1 0; min-width:0;
+  display:flex; flex-direction:column; gap:10px;
+}
+#slide-Golem .golem-col-left > .golem-box { flex:1 1 0; min-height:0; }
+
+/* Colonne de droite (2/3) : Mécanisme (haut, pleine largeur) puis Méthodologie fusionnée (bas) */
+#slide-Golem .golem-col-right {
+  flex:2 1 0; min-width:0;
+  display:flex; flex-direction:column; gap:10px;
+}
+#slide-Golem .golem-row-bottom {
+  flex:1 1 0; min-height:0;
+  display:flex; gap:10px;
+}
+#slide-Golem .golem-row-bottom > .golem-box { flex:1 1 0; min-height:0; }
+
+#slide-Golem .golem-box { box-sizing:border-box; min-height:0; display:flex; flex-direction:column; }
+
+/* Cadres interactifs */
+#slide-Golem details.golem-acc { display:flex; flex-direction:column; min-height:0; flex:1 1 auto; }
+#slide-Golem details.golem-acc summary.golem-box-title {
+  cursor:pointer; list-style:none;
+  display:inline-block; color:#F5EFDD;
+  font-size:0.55em; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+}
+#slide-Golem details.golem-acc summary.golem-box-title::-webkit-details-marker { display:none; }
+#slide-Golem details.golem-acc summary.golem-box-title::marker { content:''; }
+#slide-Golem details.golem-acc summary.golem-box-title.center { display:block; text-align:center; margin:0 auto; width:fit-content; }
+#slide-Golem details.golem-acc summary .golem-toggle { margin-left:8px; opacity:0.65; }
+#slide-Golem details.golem-acc[open] summary .icon-plus { display:none; }
+#slide-Golem details.golem-acc:not([open]) summary .icon-minus { display:none; }
+#slide-Golem details.golem-acc .golem-content {
+  border:0px solid rgba(245,239,221,0.35); padding:10px 14px; margin-top:10px; box-sizing:border-box;
+  min-height:0; overflow-y:auto; flex:1 1 auto;
+}
+/* Pas de cadre visible : colonne de gauche ET blocs Mécanisme / Méthodologie de la colonne de droite */
+#slide-Golem .golem-col-left .golem-content,
+#slide-Golem .golem-mech .golem-content,
+#slide-Golem .golem-meth .golem-content {
+  border:none; padding-left:0; padding-right:0;
+}
+
+#slide-Golem .golem-quest ul, #slide-Golem .golem-res ul { margin:0; padding: 10px 15px 10px 25px; box-sizing:border-box; font-size:0.46em; line-height:1.5; border:1px solid rgba(245,239,221,0.35);}
+#slide-Golem .golem-quest li, #slide-Golem .golem-res li { margin-bottom:8px; }
+
+/* Le mécanisme */
+#slide-Golem .golem-mech { flex:1.7 1 0; }
+#slide-Golem .golem-mech-sub { font-size:0.46em; font-weight:700; letter-spacing:0.05em; opacity:0.85; margin-bottom:10px; text-align:center; }
+#slide-Golem .golem-mech-img { width:100%; max-width:100%; max-height:190px; object-fit:contain; display:block; margin:0 auto 12px; }
+#slide-Golem .golem-mech-labels { display:flex; justify-content:space-around; font-size:0.5em; font-weight:700; margin-bottom:12px; }
+
+/* Bloc Méthodologie fusionné */
+#slide-Golem .golem-meth-flex { display:flex; gap:16px; flex:1 1 auto; min-height:0; }
+#slide-Golem .golem-meth-flex > div { flex:1 1 0; min-width:0; display:flex; flex-direction:column; }
+
+#slide-Golem .golem-sol-concept { font-size:0.5em; font-weight:700; margin-bottom:6px; }
+#slide-Golem .golem-sol-img { width:100%; max-height:110px; object-fit:contain; display:block; margin:0 0 6px; border-radius:4px; }
+#slide-Golem .golem-sol-text { font-size:0.44em; line-height:1.4; opacity:0.9; }
+
+#slide-Golem .golem-meth-sub { font-size:0.46em; font-weight:700; letter-spacing:0.05em; text-align:left; margin-bottom:8px; opacity:0.85; }
+#slide-Golem .golem-meth-img { width:100%; max-height:150px; object-fit:contain; display:block; margin:0 0 8px; border-radius:4px; }
+#slide-Golem .golem-meth-cols { display:flex; gap:12px; color:#F5EFDD; grid-template-columns: 30% 20% 50%; opacity:1; text-align: center; }
+#slide-Golem .golem-meth-cols > div { flex:1; font-size:0.46em; line-height:1.4; }
+#slide-Golem .golem-meth-cols strong { display:block; font-size:1.1em; margin-bottom:4px; color:#E8C97A; }
+</style>
+
+<div class="golem-wrap">
+
+  <div class="golem-breadcrumb">
+    <span class="crumb outline">AAM dans CIGEO</span>
+    <span class="crumb outline">Les alvéoles HA</span>
+    <span class="crumb outline">Évolution dans le temps</span>
+    <span class="crumb current">Projets</span>
+  </div>
+
+  <div class="golem-header">
+    <div class="golem-slogan">Projet Golem</div>
+    <div class="golem-desc">Évaluation de la stabilité à long terme de l'interface entre l’argilite et un géopolymère à base d'argiles calcinées</div>
+  </div>
+
+  <div class="golem-grid">
+
+    <!-- Colonne de gauche : Questionnement + Résultats attendus (sans cadre) -->
+    <div class="golem-col-left">
+
+      <div class="golem-box golem-quest">
+        <details class="golem-acc">
+          <summary class="golem-box-title">Questionnement<span class="golem-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="golem-content">
+            <ul>
+              <li>Comment évolue l'interface entre un géopolymère et l’argilite ?</li>
+              <li>Quelle est l'influence de la température sur cette interface ?</li>
+              <li>Comment modéliser les processus affectant cette interface ?</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="golem-box golem-res">
+        <details class="golem-acc">
+          <summary class="golem-box-title">Résultats attendus<span class="golem-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="golem-content">
+            <ul>
+              <li>Mise en place d'un scénario d'alteration de l'interface entre le géopolymère et l’argilite</li>
+              <li>Prise en compte de l'influence de la température dans ce scénario</li>
+              <li>Développement de modèles pour simuler le comportement de l'interface à long terme</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <!-- Colonne de droite : Objectifs (image) puis Méthodologie -->
+    <div class="golem-col-right">
+
+      <div class="golem-box golem-mech">
+        <details class="golem-acc" open>
+          <summary class="golem-box-title center">Objectifs<span class="golem-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="golem-content">
+            <div class="golem-mech-sub">Comprendre les mécanismes d'altération de l'interface géopolymère/argilite</div>
+            <img class="golem-mech-img" src="images/Obj_Golem_2.png" alt="avec et sans température">
+            <div class="golem-mech-labels">
+              <span>Tempérture du colis</span><span>Température ambiante</span>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="golem-row-bottom">
+
+        <div class="golem-box golem-meth">
+          <details class="golem-acc">
+            <summary class="golem-box-title center">Méthodologie<span class="golem-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+            <div class="golem-content">
+              <div class="golem-meth-flex">
+
+                <div>
+                  <img class="golem-meth-img" src="images/Exp_Golem_2.png" alt="[texte alternatif]">
+                  <div class="golem-meth-cols">
+                    <div><strong>Expérience</strong>In Situ (Hydra) et en laboratoire</div>
+                    <div><strong>Analyse</strong>Caractérisation des interfaces (DRX, FTIR, MEB, Nano)</div>
+                    <div><strong>Modélisation</strong>Via Hytec</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+## Le Projet SAGA {#slide-SAGA background-color="#0F1E3D"}
+
+```{=html}
+<style>
+#slide-SAGA h2 { display:none; }
+#slide-SAGA .saga-wrap {
+  font-family:'Georgia','Times New Roman',serif; color:#F5EFDD; width:100%;
+  height:600px; box-sizing:border-box; display:flex; flex-direction:column;
+}
+
+#slide-SAGA .saga-breadcrumb { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+#slide-SAGA .crumb {
+  font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700;
+  letter-spacing:0.02em; border-radius:999px; padding:5px 20px; display:inline-block;
+}
+#slide-SAGA .crumb.outline { color:#F5EFDD; background-color:transparent; border:2px solid #F5EFDD; }
+#slide-SAGA .crumb.current { color:#0F1E3D; background-color:#F5EFDD; border:2px solid #F5EFDD; }
+
+#slide-SAGA .saga-header { text-align:center; margin-bottom:12px; }
+#slide-SAGA .saga-slogan { font-size:0.65em; font-weight:700; letter-spacing:0.06em; color:#F5EFDD; }
+#slide-SAGA .saga-desc { font-size:0.5em; font-style:italic; opacity:0.85; margin-top:6px; line-height:1.35; }
+
+/* ---------- Disposition : 2 colonnes (1/3 - 2/3) ---------- */
+#slide-SAGA .saga-grid {
+  flex:1 1 auto; min-height:0;
+  display:flex;
+  gap:10px;
+}
+
+/* Colonne de gauche (1/3) : Questionnement + Résultats attendus, empilés, SANS cadre visible */
+#slide-SAGA .saga-col-left {
+  flex:1 1 0; min-width:0;
+  display:flex; flex-direction:column; gap:10px;
+}
+#slide-SAGA .saga-col-left > .saga-box { flex:1 1 0; min-height:0; }
+
+/* Colonne de droite (2/3) : Mécanisme (haut, pleine largeur) puis Méthodologie fusionnée (bas) */
+#slide-SAGA .saga-col-right {
+  flex:2 1 0; min-width:0;
+  display:flex; flex-direction:column; gap:10px;
+}
+#slide-SAGA .saga-row-bottom {
+  flex:1 1 0; min-height:0;
+  display:flex; gap:10px;
+}
+#slide-SAGA .saga-row-bottom > .saga-box { flex:1 1 0; min-height:0; }
+
+#slide-SAGA .saga-box { box-sizing:border-box; min-height:0; display:flex; flex-direction:column; }
+
+/* Cadres interactifs */
+#slide-SAGA details.saga-acc { display:flex; flex-direction:column; min-height:0; flex:1 1 auto; }
+#slide-SAGA details.saga-acc summary.saga-box-title {
+  cursor:pointer; list-style:none;
+  display:inline-block; color:#F5EFDD;
+  font-size:0.55em; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+}
+#slide-SAGA details.saga-acc summary.saga-box-title::-webkit-details-marker { display:none; }
+#slide-SAGA details.saga-acc summary.saga-box-title::marker { content:''; }
+#slide-SAGA details.saga-acc summary.saga-box-title.center { display:block; text-align:center; margin:0 auto; width:fit-content; }
+#slide-SAGA details.saga-acc summary .saga-toggle { margin-left:8px; opacity:0.65; }
+#slide-SAGA details.saga-acc[open] summary .icon-plus { display:none; }
+#slide-SAGA details.saga-acc:not([open]) summary .icon-minus { display:none; }
+#slide-SAGA details.saga-acc .saga-content {
+  border:0px solid rgba(245,239,221,0.35); padding:10px 14px; margin-top:10px; box-sizing:border-box;
+  min-height:0; overflow-y:auto; flex:1 1 auto;
+}
+/* Pas de cadre visible : colonne de gauche ET blocs Mécanisme / Méthodologie de la colonne de droite */
+#slide-SAGA .saga-col-left .saga-content,
+#slide-SAGA .saga-mech .saga-content,
+#slide-SAGA .saga-meth .saga-content {
+  border:none; padding-left:0; padding-right:0;
+}
+
+#slide-SAGA .saga-quest ul, #slide-SAGA .saga-res ul { margin:0; padding: 10px 15px 10px 25px; box-sizing:border-box; font-size:0.46em; line-height:1.5; border:1px solid rgba(245,239,221,0.35);}
+#slide-SAGA .saga-quest li, #slide-SAGA .saga-res li { margin-bottom:8px; }
+
+/* Le mécanisme */
+#slide-SAGA .saga-mech { flex:1.7 1 0; }
+#slide-SAGA .saga-mech-sub { font-size:0.46em; font-weight:700; letter-spacing:0.05em; opacity:0.85; margin-bottom:10px; text-align:center; }
+#slide-SAGA .saga-mech-img { width:100%; max-width:100%; max-height:190px; object-fit:contain; display:block; margin:0 auto 12px; }
+#slide-SAGA .saga-mech-labels { display:flex; justify-content:space-around; font-size:0.5em; font-weight:700; margin-bottom:12px; }
+
+/* Bloc Méthodologie fusionné : Alkaline Lake + Approche multi-échelle côte à côte */
+#slide-SAGA .saga-meth-flex { display:flex; gap:16px; flex:1 1 auto; min-height:0; }
+#slide-SAGA .saga-meth-flex > div { flex:1 1 0; min-width:0; display:flex; flex-direction:column; }
+
+#slide-SAGA .saga-sol-concept { font-size:0.5em; font-weight:700; margin-bottom:6px; }
+#slide-SAGA .saga-sol-img { width:100%; max-height:110px; object-fit:contain; display:block; margin:0 0 6px; border-radius:4px; }
+#slide-SAGA .saga-sol-text { font-size:0.44em; line-height:1.4; opacity:0.9; }
+
+#slide-SAGA .saga-meth-sub { font-size:0.46em; font-weight:700; letter-spacing:0.05em; text-align:left; margin-bottom:8px; opacity:0.85; }
+#slide-SAGA .saga-meth-img { width:100%; max-height:150px; object-fit:contain; display:block; margin:0 0 8px; border-radius:4px; }
+#slide-SAGA .saga-meth-cols { display:flex; gap:12px; color:#F5EFDD;  grid-template-columns: 30% 20% 50%; opacity:1; text-align: center; }
+#slide-SAGA .saga-meth-cols > div { flex:1; font-size:0.46em; line-height:1.4; }
+#slide-SAGA .saga-meth-cols strong { display:block; font-size:1.1em; margin-bottom:4px; color:#E8C97A; }
+</style>
+
+<div class="saga-wrap">
+
+  <div class="saga-breadcrumb">
+    <span class="crumb outline">AAM dans CIGEO</span>
+    <span class="crumb outline">Les alvéoles HA</span>
+    <span class="crumb outline">Évolution dans le temps</span>
+    <span class="crumb current">Projets</span>
+  </div>
+
+  <div class="saga-header">
+    <div class="saga-slogan">Projet SAGA</div>
+    <div class="saga-desc">Étude des analogues naturels alcalins pour valider<br>la stabilité des matrices silico-alumineuses.</div>
+  </div>
+
+  <div class="saga-grid">
+
+    <!-- Colonne de gauche : Questionnement + Résultats attendus (sans cadre) -->
+    <div class="saga-col-left">
+
+      <div class="saga-box saga-quest">
+        <details class="saga-acc">
+          <summary class="saga-box-title">Questionnement<span class="saga-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="saga-content">
+            <ul>
+              <li>Verres nucléaires&nbsp;: quelle stabilité chimique à pH élevé à l'échelle géologique&nbsp;?</li>
+              <li>Géopolymères&nbsp;: les phases amorphes finissent-elles par cristalliser&nbsp;?</li>
+              <li>Modélisation&nbsp;: quelle est notre capacité de modélisation des géopolymères&nbsp;?</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="saga-box saga-res">
+        <details class="saga-acc">
+          <summary class="saga-box-title">Résultats attendus<span class="saga-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="saga-content">
+            <ul>
+              <li>Compréhension des mécanismes de dissolution du verre à pH élevé.</li>
+              <li>Compréhension du passage du gel amorphe (géopolymère) à la zéolite.</li>
+              <li>Confrontation des capacités actuelles de modélisation des géopolymères aux observations expérimentales sur des temps millénaires.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <!-- Colonne de droite : Mécanisme (Gel.png) puis Méthodologie fusionnée (Lake.png + Exp.png) -->
+    <div class="saga-col-right">
+
+      <div class="saga-box saga-mech">
+        <details class="saga-acc" open>
+          <summary class="saga-box-title center">Objectifs<span class="saga-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+          <div class="saga-content">
+            <div class="saga-mech-sub">Comprendre la transition du verre au gel puis à la zéolithe</div>
+            <img class="saga-mech-img" src="images/Gel_2.png" alt="Verre → Gel → Zéolite">
+            <div class="saga-mech-labels">
+              <span>Verre</span><span>Géopolymère</span><span>Zéolite</span>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="saga-row-bottom">
+
+        <div class="saga-box saga-meth">
+          <details class="saga-acc">
+            <summary class="saga-box-title center">Méthodologie<span class="saga-toggle"><span class="icon-plus">+</span><span class="icon-minus">&ndash;</span></span></summary>
+            <div class="saga-content">
+              <div class="saga-meth-flex">
+
+                <div>
+                  <img class="saga-meth-img" src="images/methodologie.png" alt="Terrain, analyses, numérique">
+                  <div class="saga-meth-cols">
+                    <div><strong>Lac alcalin</strong>Carottage et prélèvements.</div>
+                    <div><strong>Analyses</strong>RMN, DRX, EDS, FTIR.</div>
+                    <div><strong>Numérique</strong>Simulation via HYTEC</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+## Le lac Magadi {#slide-lac-Magadi background-color="#0F1E3D"}
+
+```{=html}
+<style>
+#slide-lac-Magadi h2 { display:none; }
+</style>
+
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    AAM dans CIGEO
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Les alvéoles HA
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Évolution dans le temps
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Projets
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#0F1E3D; letter-spacing:0.02em; background-color:#F5EFDD; border-radius:999px; padding:6px 22px; display:inline-block;">
+    Le lac Magadi
+  </span>
+</div>
+
+<div class="aam-stage" style="position:relative; width:100%; height:640px; z-index:1; border-radius:6px; overflow:hidden; background:#0F1E3D;">
+
+  <!-- Fond : carte détaillée du lac Magadi, révélée au 1er clic (derrière la Terre) -->
+  <img class="fragment fade-in" data-fragment-index="1"
+       src="images/Map_Magadi.png"
+       style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
+
+  <!-- La Terre + pastille : visible dès l'ouverture, disparaît quand Lake_Magadi_Sentinel arrive (fragment 2) -->
+  <div class="fragment fade-out" data-fragment-index="1" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60%; z-index:2;">
+    <div style="position:relative;">
+      <img src="images/Terre_no.png" style="display:block; width:100%;">
+      <!-- Pastille : ajuster top/left (%) pour la repositionner sur le globe -->
+      <div class="aam-word" style="position:absolute; top:60%; left:60%; z-index:5;">
+        <span class="ha-dot"></span>
+        <div class="aam-card" style="position:fixed !important; top:30%; left:70%; bottom:auto; right:auto; z-index:6;">
+          <div class="aam-card-title">Projet HSPDP (Hominin Sites and Paleolakes Drilling Project)</div>
+          <h5>Objectif</h5>
+          <p>Reconstituer en haute résolution les variations du paléoclimat et des paléoenvironnements d'Afrique de l'Est sur les derniers ~3,5 millions d'années pour tester les hypothèses d'impact du climat sur l'évolution humaine</p>
+          <p><strong>Approche</strong>&nbsp;: Effectuer des forages scientifiques continentaux dans les sédiments lacustres profonds situés à proximité immédiate des grands gisements de fossiles d'homininés et de sites archéologique</p>
+          <p><strong>Bilan</strong>&nbsp;: Près de 2 km de carottes extraites à travers 6 bassins rifts clés en Éthiopie et au Kenya (Awash Nord, Baringo, Ouest Turkana, Olorgesailie, Magadi et Chew Bahir).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="fragment fade-in" data-fragment-index="2" style="position:absolute; top:5%; right:10%; width:40%; z-index:2;">
+    <div style="position:relative;">
+      <img src="images/Lake_Magadi_Sentinel.png" style="display:block; width:100%; border-radius:24px;">
+      <!-- Pastille : MAG14-2A -->
+      <div class="aam-word" style="position:absolute; top:15%; left:60%; z-index:2;">
+        <span class="ha-dot"></span>
+        <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%;top:auto; left:auto; z-index:6;">
+          <div class="aam-card-title">Site MAG14-2 (Forage MAG14-2A)</div>
+          <p><strong>Localisation</strong>&nbsp;: Dépocentre du bassin (sous-bassin nord)</p>
+          <p><strong>Profondeur</strong>&nbsp;: ~194 m (atteint le socle de trachyte)</p>
+          <p><strong>Environnement</strong>&nbsp;: Archive continue couvrant environ 1 million d'années.</p>
+        </div>
+      </div>
+      <!-- Pastille : MAG14-1A -->
+      <div class="aam-word" style="position:absolute; top:33%; left:55%; z-index:2;">
+        <span class="ha-dot"></span>
+        <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%;top:auto; left:auto; z-index:6;">
+          <div class="aam-card-title">Site MAG14-1 (Forage MAG14-1A)</div>
+          <p><strong>Localisation</strong>&nbsp;: Zone sud, à proximité de la chaussée (Causeway)</p>
+          <p><strong>Profondeur</strong>&nbsp;: ~133 à 137 m (atteint le socle de trachyte)</p>
+          <p><strong>Environnement</strong>&nbsp;: Zone de marge lacustre peu profonde.</p>
+        </div>
+      </div>
+      <!-- Pastille : Zone NASH -->
+      <div class="aam-word" style="position:absolute; top:10%; left:57%; z-index:2;">
+        <span class="ha-dot"></span>
+        <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%;top:auto; left:auto; z-index:6;">
+          <div class="aam-card-title">Lagune Nord-Est & Marges Hydrothermales</div>
+          <p><strong>Localisation</strong>&nbsp;: Bordures littorales du lac Magadi principal.</p>
+          <p><strong>Profondeur</strong>&nbsp;: Gels précurseurs de cherts et de zéolithes interstratifiés avec des dépôts évaporitiques</p>
+          <p><strong>Environnement</strong>&nbsp;: Altération alcaline de surface des tufs et ponces volcaniques en bordure de lac.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Vidéo : révélée ET lancée au 1er clic, sous la Terre -->
+  <div class="fragment fade-in yt-video-frag" data-fragment-index="2" data-player-id="player-magadi"
+       style="position:absolute; top:5%; left:5%; width:40%; z-index:4;">
+    <div id="video-wrapper-magadi" style="width:100%; aspect-ratio:3/2; position:relative; overflow:hidden;">
+      <div id="player-magadi" style="width:100%; height:100%;"></div>
+    </div>
+  </div>
+
+  <!-- Texte : révélé au 3e clic, au centre -->
+  <div class="fragment fade-in" data-fragment-index="3"
+       style="position:absolute; bottom:0%; left:4%; width:40%; transform:translateY(-50%); z-index:6;
+              background:#0F1E3D; border-top:3px solid #F5EFDD; border-bottom:1px solid rgba(245,239,221,0.4);
+              padding:18px 22px; box-sizing:border-box; box-shadow:0 8px 24px rgba(0,0,0,0.45);">
+    <div style="font-family:'Georgia','Times New Roman',serif; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#F5EFDD; font-size:0.6em; margin-bottom:8px;">
+      Le Socle Trachytique
+    </div>
+    <div style="font-family:'Georgia','Times New Roman',serif; font-size:0.48em; line-height:1.45; color:#F5EFDD;">
+      Le bassin repose sur une épaisse couche de laves de fissure (Formation du Trachyte de Magadi), épaisse de 120 mètres et datée de 1,08 Ma (carotte MAG14-2A). Cette fondation constitue la source primaire et inépuisable du matériel volcanique originel (verre et silicates).
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  // Infrastructure partagée par tous les cadres vidéo (une seule définition, quel que
+  // soit l'ordre/temps de chargement : évite de perdre une config si l'API Youtube
+  // répond avant que les <script> des slides suivantes n'aient été exécutés).
+  if (!window.__ytSetupDone) {
+    window.__ytSetupDone = true;
+    window.__ytQueue = [];
+    window.__ytApiReady = false;
+
+    window.__ytCreatePlayer = function(cfg) {
+      let intervalId;
+      const p = new YT.Player(cfg.containerId, {
+        videoId: cfg.videoId,
+        playerVars: {
+          start: cfg.start,
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          fs: 0,
+          disablekb: 1
+        },
+        events: {
+          onReady: (event) => event.target.setPlaybackRate(cfg.rate || 1),
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              intervalId = setInterval(() => {
+                if (p.getCurrentTime() >= cfg.end - 0.3) {
+                  p.pauseVideo();
+                  clearInterval(intervalId);
+                }
+              }, 100);
+            }
+            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+              clearInterval(intervalId);
+            }
+          }
+        }
+      });
+    };
+
+    window.__ytQueuePlayer = function(cfg) {
+      if (window.__ytApiReady) {
+        window.__ytCreatePlayer(cfg);
+      } else {
+        window.__ytQueue.push(cfg);
+      }
+    };
+
+    window.onYouTubeIframeAPIReady = function() {
+      window.__ytApiReady = true;
+      window.__ytQueue.forEach(window.__ytCreatePlayer);
+      window.__ytQueue = [];
+    };
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+  }
+  window.__ytQueuePlayer({ containerId: 'player-magadi', videoId: 'xVDYBdrDLew', start: 64, end: 240, rate: 2 });
+})();
+</script>
+```
+
+## Évolution du Lac Magadi {#slide-evolution-magadi background-color="#0F1E3D"}
+
+```{=html}
+<style>
+#slide-evolution-magadi h2 { display:none; }
+</style>
+
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    AAM dans CIGEO
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Les alvéoles HA
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Projets
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#F5EFDD; letter-spacing:0.02em; background-color:transparent; border:2px solid #F5EFDD; border-radius:999px; padding:5px 20px; display:inline-block;">
+    Le lac Magadi
+  </span>
+  <span style="font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700; color:#0F1E3D; letter-spacing:0.02em; background-color:#F5EFDD; border-radius:999px; padding:6px 22px; display:inline-block;">
+    Évolution du Lac Magadi
+  </span>
+</div>
+
+<div class="aam-stage" style="position:relative; width:100%; height:640px;">
+  <img src="images/Info_Magadi.png"
+       style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain;">
+  <!-- Verre Nucléaire   -->
+  <div class="aam-word" style="position:absolute; top:10%; left:10%; z-index:2;">
+    <span class="ha-dot"></span>
+    <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%; top:auto; left:auto; z-index:6;">
+      <div class="aam-card-title">Verre volcanique</div>
+      <p><strong>Nom</strong>&nbsp;: Tephras / Cendres trachytiques non altérées</p>
+      <p><strong>Description</strong>&nbsp;: Matériau vitreux réactif issu des retombées de cendres volcaniques ou de dépôts détritiques. Il est préservé dans les horizons lacustres d'eau douce lorsque le pH et la salinité restent modérés.</p>
+      <p><strong>Composition</strong>&nbsp;: Silico-alumineux amorphe riche en silice, sodium, potassium et aluminium (verre trachytique/rhyolitique : SiO2 ~60–70 %)</p>
+      <p><strong>Contexte</strong>&nbsp;: Point de départ de la réaction ; il fournit le réseau silico-alumineux qui sera dissous par l'attaque des saumures alcalines.</p>
+      <p><strong>Projet Saga</strong>&nbsp;: Matière première utilisé pour fabriquer les N-A-S-H, étude de la cinétique de dissolution du verre volcanique pour la modélisation.</p>
+    </div>
+  </div>
+  <!-- Cherts   -->
+  <div class="aam-word" style="position:absolute; top:10%; left:35%; z-index:2;">
+    <span class="ha-dot"></span>
+    <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%; top:auto; left:auto; z-index:6;">
+      <div class="aam-card-title">Cherts</div>
+      <p><strong>Nom</strong>&nbsp;: Chert (Silice microcristalline / Chert de type Magadi)</p>
+      <p><strong>Description</strong>&nbsp;: Roche siliceuse très compacte formant des bancs lités ou nodulaires dans la carotte. Il résulte de la déshydratation précoce et de la diagenèse de gels de silice amorphe ou de silicates de sodium (ex. magadiite). Il conserve parfois des microstructures de séchage à l'air ("motifs en labyrinthe").</p>
+      <p><strong>Composition</strong>&nbsp;: Quartz microcristallin et chalcédoine, SiO2 de haute pureté</p>
+      <p><strong>Contexte</strong>&nbsp;: Marqueur de l'augmentation du pH et de la salinité dans le milieu lacustre entrainant la dissolution du verre volcanique.</p>
+      <p><strong>Projet Saga</strong>&nbsp;: Localisation de cherts dans la carotte pour estimer la datation de l'apparition géopolymère.</p>
+    </div>
+  </div>
+  <!-- Zeolithes   -->
+  <div class="aam-word" style="position:absolute; top:10%; left:62%; z-index:2;">
+    <span class="ha-dot"></span>
+    <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%; top:auto; left:auto; z-index:6;">
+      <div class="aam-card-title">Zeolithes</div>
+      <p><strong>Nom</strong>&nbsp;: Zéolithe authigène (ex. Analcime, Érionite, Phillipsite)</p>
+      <p><strong>Description</strong>&nbsp;: Aluminosilicates hydratés cristallins formés par l'altération diagenétique du verre volcanique et la réorganisation du gel N-A-S-H dans des eaux d'imbibition très alcalines (pH > 9–11) et salines.</p>
+      <p><strong>Composition</strong>&nbsp;: Tectosilicates hydratés de sodium, potassium et calcium</p>
+      <p><strong>Contexte</strong>&nbsp;: Produit final cristallin et stable scellant la maturation diagenétique complète du système silico-alumineux.</p>
+      <p><strong>Projet Saga</strong>&nbsp;: Composition finale à atteindre utilisée pour construire la TDB.</p>
+    </div>
+  </div>
+    <!-- Gel   -->
+  <div class="aam-word" style="position:absolute; top:10%; left:91%; z-index:2;">
+    <span class="ha-dot"></span>
+    <div class="aam-card" style="position:fixed !important; bottom:30%; right:10%; top:auto; left:auto; z-index:6;">
+      <div class="aam-card-title">Géopolymère</div>
+      <p><strong>Nom</strong>&nbsp;: Gel silico-alumineux de sodium (N-A-S-H amorphe)</p>
+      <p><strong>Description</strong>&nbsp;: Phase amorphe gélatineuse et hydratée observée en surface (ex. lac Nasikie Engida) à l'émergence des sources chaudes hydrothermales alcalines</p>
+      <p><strong>Composition</strong>&nbsp;: Réseau amorphe d'aluminosilicate de sodium hydraté (Na-Al-Si), souvent associé à des exopolymères microbiens (EPS)6more_horiz</p>
+      <p><strong>Contexte</strong>&nbsp;: Précurseur métastable intermédiaire ("géopolymère naturel") formé juste après la dissolution du verre et avant la cristallisation zéolitique.</p>
+      <p><strong>Projet Saga</strong>&nbsp;: Composition du géopolymère à atteindre et étude à haute température et préssion pour le cristalisé en zeolites.</p>
+    </div>
+  </div>
+</div>
+
+```
+
+
+## Conclusion {#slide-Conclusion background-color="#F5EFDD"}
+
+```{=html}
+<style>
+#slide-Conclusion h2 { display:none; }
+#slide-Conclusion .conclu-wrap {
+  font-family:'Georgia','Times New Roman',serif; color:#0F1E3D; width:100%;
+  height:600px; box-sizing:border-box; display:flex; flex-direction:column;
+}
+
+/* Fil d'Ariane */
+#slide-Conclusion .conclu-breadcrumb { display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap; }
+#slide-Conclusion .crumb {
+  font-family:'Georgia','Times New Roman',serif; font-size:0.5em; font-weight:700;
+  letter-spacing:0.02em; border-radius:999px; padding:5px 20px; display:inline-block;
+}
+#slide-Conclusion .crumb.outline { color:#0F1E3D; background-color:transparent; border:2px solid #0F1E3D; }
+#slide-Conclusion .crumb.current { color:#F5EFDD; background-color:#0F1E3D; border:2px solid #0F1E3D; }
+
+/* Image pleine largeur en haut (réduite pour laisser de la place aux timelines) */
+#slide-Conclusion .conclu-img-top {
+  display:block;
+  margin:24px auto;
+  width:100%;
+  max-height:120px;
+  object-fit:cover;
+  border-radius:6px;
+}
+#slide-Conclusion .conclu-text-top {
+  font-size:1em;
+  line-height:1.5;
+  color:#0F1E3D;
+  font-weight:700;
+}
+
+/* ---------- Layout Global Conclusion ---------- */
+#slide-Conclusion .conclu-grid {
+  display: flex;
+  flex:1 1 auto; min-height:0;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  font-family: 'Georgia', serif;
+  color: #0F1E3D;
+}
+
+#slide-Conclusion .project-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width:0;
+}
+
+#slide-Conclusion .project-title {
+  font-size: 0.7em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0F1E3D;
+  margin-bottom: 6px;
+  border-bottom: 3px solid #E8C97A;
+  padding-bottom: 5px;
+}
+
+#slide-Conclusion .project-img {
+  width: 100%;
+  max-width: 70%;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-bottom: 3px;
+}
+
+#slide-Conclusion .project-obj {
+  font-size: 0.46em;
+  font-style: italic;
+  margin-bottom: 3px;
+  min-height: 32px;
+  max-width: 260px;
+  line-height: 1.3;
+}
+
+/* ---------- Timeline Serpentine Horizontale ---------- */
+/* Ligne fléchée verticale */
+#slide-Conclusion .timeline-arrow {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  height: 230px;
+  margin: 14px auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* La ligne elle-même */
+#slide-Conclusion .timeline-arrow::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 12px; left: 50%;
+  width: 2px;
+  background: #E8C97A;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+/* La pointe de flèche en bas */
+#slide-Conclusion .timeline-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #E8C97A;
+  z-index: 0;
+}
+
+/* Chaque étape sur la ligne */
+#slide-Conclusion .arrow-step {
+  position: relative;
+  height: 33%;
+  width: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Le point, toujours centré horizontalement sur la ligne */
+#slide-Conclusion .step-dot {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px; height: 14px;
+  background-color: #F5EFDD;
+  border: 3px solid #0F1E3D;
+  border-radius: 50%;
+  transition: transform 0.15s, background-color 0.15s;
+}
+#slide-Conclusion .arrow-step:hover .step-dot {
+  transform: translate(-50%, -50%) scale(1.3);
+  background-color: #E8C97A;
+}
+
+/* Titre, positionné à gauche ou à droite du point selon la classe */
+#slide-Conclusion .step-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  font-size: 0.48em;
+  font-weight: 700;
+  color: #0F1E3D;
+  line-height: 1.25;
+}
+#slide-Conclusion .arrow-step.left .step-label { right: calc(50% + 24px); text-align: right; }
+#slide-Conclusion .arrow-step.right .step-label { left: calc(50% + 24px); text-align: left; }
+
+/* Infobulle détaillée, du côté opposé au titre pour ne pas le recouvrir */
+#slide-Conclusion .step-tooltip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  width: 160px;
+  background-color: #0F1E3D;
+  color: #F5EFDD;
+  font-size: 0.42em;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 10;
+  text-align: justify;
+}
+#slide-Conclusion .arrow-step:hover .step-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Si le titre est à gauche, l'infobulle s'ouvre à droite, et inversement */
+#slide-Conclusion .arrow-step.left .step-tooltip { left: calc(50% + 24px); }
+#slide-Conclusion .arrow-step.right .step-tooltip { right: calc(50% + 24px); transform: translateY(-50%) translateX(-6px); }
+#slide-Conclusion .arrow-step.right:hover .step-tooltip { transform: translateY(-50%) translateX(0); }
+
+#slide-Conclusion .badge-link {
+  display: inline-block;
+  background-color: #E8C97A;
+  color: #0F1E3D;
+  font-size: 0.95em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+#slide-Conclusion .timeline-conclusion {
+  width: 100%;
+  max-width: 200px;
+  margin: 28px auto 0;
+  font-size: 0.44em;
+  line-height: 1.35;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  color: #0F1E3D;
+
+  display: block;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+</style>
+
+<div class="conclu-wrap">
+
+  <div class="conclu-breadcrumb">
+    <span class="crumb outline">AAM dans CIGEO</span>
+    <span class="crumb outline">Les alvéoles HA</span>
+    <span class="crumb outline">Projets</span>
+    <span class="crumb outline">Le lac Magadi</span>
+    <span class="crumb outline">Évolution du Lac Magadi</span>
+    <span class="crumb current">Conclusion</span>
+  </div>
+
+  <div style="position:relative; margin:28px auto; width:90%;">
+    <img class="conclu-img-top" src="images/im_conclusion.png" alt="Image de conclusion" style="margin:0; width:100%;">
+  </div>
+  <div class="conclu-text-top" style="position:absolute; top:5%; left:22%; margin:0;">
+    EDZ
+  </div>
+  <div class="conclu-text-top" style="position:absolute; top:5%; left:52%; margin:0;">
+    MREA
+  </div>
+  <div class="conclu-text-top" style="position:absolute; top:5%; left:65%; margin:0;">
+    Liner
+  </div>
+  <div class="conclu-text-top" style="position:absolute; top:5%; left:76%; margin:0;">
+    Colis HA
+  </div>
+  <div class="conclu-grid">
+
+
+    <!-- PROJET SAGA -->
+    <div class="project-col">
+      <div class="project-title">Projet SAGA</div>
+      <div class="project-obj">Comprendre la transition du verre au gel puis à la zéolithe</div>
+      <img class="project-img" src="images/SAGA_Conclusion.png" alt="SAGA">
+
+      <div class="timeline-arrow">
+        <div class="arrow-step left">
+          <div class="step-label">Partenariat et acquisition d'échantillon</div>
+          <div class="step-dot"></div>
+          <div class="step-tooltip">
+            Contact avec les différents potentielles partenaires ayant participer au projet HSDPD afin de négocier et organiser l'acquisition des échantillons.
+          </div>
+        </div>
+
+        <div class="arrow-step right">
+          <div class="step-dot"></div>
+          <div class="step-label">Partie Expérimentale de la thèse</div>
+          <div class="step-tooltip">
+            Caractérisation des échantillons provenant des carottes (Trachyte, cherts et zeolithes) et des prélèvement sur site (N-A-S-H). 
+            Reproduction en laboratoire de la géopolymérisation à partir du trachyte de Magadi.
+          </div>
+        </div>
+
+        <div class="arrow-step left">
+          <div class="step-label">Partie Numérique de la thèse</div>
+          <div class="step-dot"></div>
+          <div class="step-tooltip">
+            Adaptation de la TDB de BEAR aux N-A-S-H de Magadi.
+            Modélisation de la dissolution du verre et de la précipitation de N-A-S-H.
+            Modélisation long terme du passage du verre au gel puis à la zéolithe.
+            <div class="badge-link"> TDB : BEAR </div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-conclusion">
+        Modélisation de l'évolution minéralogique du trachyte de Magadi à long terme.
+      </div>
+    </div>
+
+        <!-- PROJET GOLEM -->
+    <div class="project-col">
+      <div class="project-title">Projet GOLEM</div>
+      <div class="project-obj">Étude du comportement de l'interface géopolymère/argilite</div>
+      <img class="project-img" src="images/Golem_Conclusion.png" alt="Golem">
+
+
+      <div class="timeline-arrow">
+
+        <div class="arrow-step left">
+          <div class="step-label">Pré-lancement</div>
+          <div class="step-dot"></div>
+          <div class="step-tooltip">
+            Lancement In Situ du projet Hydra à Tournemire à partir de formulation à base de métakaolin et d'argilite calcinée.<br>
+            <em>⏳ Maturation : 2 ans</em>
+          </div>
+        </div>
+
+        <div class="arrow-step right">
+          <div class="step-dot"></div>
+          <div class="step-label">Partie Expérimentale de la thèse</div>
+          <div class="step-tooltip">
+            Lancement d'éssai laboratoire pour suivre le comportement de l'interface géopolymère/argilite au jeune âge.
+            Extraction et analyse des échantillons du projet Hydra
+          </div>
+        </div>
+
+        <div class="arrow-step left">
+          <div class="step-label">Partie Modélisation de la thèse</div>
+          <div class="step-dot"></div>
+          <div class="step-tooltip">
+            Simulation numérique de l'évolution de l'interface géopolymère/argilite via le logiciel Hytec, projection à long terme.
+            <div class="badge-link">TDB et cinétique : BEAR / SAGA</div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-conclusion">
+        Modélisation de l'interface géopolymère/argilite à long terme.
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+## Merci {#slide-Merci background-color="#F5EFDD"}
+
+```{=html}
+<style>
+#slide-Merci h2 { display:none; }
+#slide-Merci .merci-wrap {
+  font-family:'Georgia','Times New Roman',serif; color:#0F1E3D; width:100%;
+  height:600px; box-sizing:border-box; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; position:relative;
+  padding:0 60px;
+}
+
+/* Filet rouge signature, façon "Le Monde" */
+#slide-Merci .merci-rule-top {
+  width:120px; height:4px; background-color:#CE1126;
+  margin-bottom:28px;
+}
+
+/* Surtitre façon rubrique de presse */
+#slide-Merci .merci-kicker {
+  font-size:0.55em; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:#CE1126; margin-bottom:14px;
+}
+
+/* Titre principal, grand corps serif */
+#slide-Merci .merci-title {
+  font-size:2.6em; font-weight:400; line-height:1.1;
+  color:#0F1E3D; text-align:center; margin-bottom:18px;
+  letter-spacing:-0.01em;
+}
+#slide-Merci .merci-title em { font-style:italic; color:#CE1126; }
+
+/* Filet fin de séparation */
+#slide-Merci .merci-divider {
+  width:60px; height:1px; background-color:#0F1E3D; opacity:0.4;
+  margin:22px 0;
+}
+
+/* Sous-titre / question */
+#slide-Merci .merci-question {
+  font-size:1em; font-style:italic; font-weight:400;
+  color:#0F1E3D; text-align:center; opacity:0.9;
+}
+
+/* Bas de page façon "ours" de journal */
+#slide-Merci .merci-footer {
+  position:absolute; bottom:28px; left:0; right:0;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:0 60px;
+  font-size:0.42em; letter-spacing:0.05em; text-transform:uppercase;
+  color:#0F1E3D; opacity:0.55;
+  border-top:1px solid rgba(15,30,61,0.25);
+  padding-top:10px;
+}
+</style>
+
+<div class="merci-wrap">
+
+  <div class="merci-kicker">Projet SAGA/GOLEM</div>
+
+  <div class="merci-rule-top"></div>
+
+  <div class="merci-title">Merci pour<br><em>votre attention</em></div>
+
+  <div class="merci-divider"></div>
+
+  <div class="merci-question">Des questions&nbsp;?</div>
+
+  <div class="merci-footer">
+    <span>Projets GOLEM &amp; SAGA</span>
+    <span>Thèse</span>
+  </div>
+
+</div>
+```
